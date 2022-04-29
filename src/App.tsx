@@ -24,7 +24,8 @@ const App = () => {
       // sending the search text as upper case to retrieve proper response
       const res = await fetch(`${API}/search?q=${searchText?.toUpperCase()}`)
       const data = await res.json()
-      setResults(data)
+      setResults(data && data.length ? data : [])
+      // we just wait for data, even if it fails or is undefined we have to stop loading
       setLoading(false)
     } catch (e) {
       setLoading(false)
