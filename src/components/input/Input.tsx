@@ -8,15 +8,11 @@ type Props = {
 }
 
 const Input = ({ value, onChange, placeholder }: Props) => {
-  // FIXME `any` is not perfect
-  const handleChange = (e: any) => {
-    onChange(e.target.value)
-  }
   return (
     <StyledInput
       type="text"
       value={value}
-      onChange={handleChange}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
       placeholder={placeholder}
     />
   )
