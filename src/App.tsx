@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Input, Card, Loader, Error } from './components';
 import { API } from './utils/constants';
 import { Notif } from './utils/interfaces';
-import { debounce } from './utils/Utility';
 
 function App() {
     const [searchText, setSearchText] = useState('');
@@ -13,10 +12,9 @@ function App() {
     useEffect(() => {
         // adding a debounce to wait every 1.5 seconds
         // calling an api every time something is typed is bad performance
-        callApi();
+        const timer = setTimeout(() => effect(), 1500);
+        return () => clearTimeout(timer);
     }, [searchText]);
-
-    const callApi = debounce(() => effect());
 
     const effect = async () => {
         try {

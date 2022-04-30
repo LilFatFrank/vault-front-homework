@@ -54,21 +54,27 @@ function Card({ type, amount, asset, name, receiver, sender }: CardProps) {
                     </Row>
                     {sender || receiver ? (
                         <Row>
-                            <div
-                                style={{ cursor: 'pointer' }}
-                                onClick={() =>
-                                    navigator.clipboard.writeText(sender)
-                                }
-                            >
-                                From: {sender}
+                            <div>
+                                From:{' '}
+                                <span
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() =>
+                                        navigator.clipboard.writeText(receiver)
+                                    }
+                                >
+                                    {sender}
+                                </span>
                             </div>
-                            <div
-                                style={{ cursor: 'pointer' }}
-                                onClick={() =>
-                                    navigator.clipboard.writeText(receiver)
-                                }
-                            >
-                                To: {receiver}
+                            <div>
+                                To:{' '}
+                                <span
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() =>
+                                        navigator.clipboard.writeText(receiver)
+                                    }
+                                >
+                                    {receiver}
+                                </span>
                             </div>
                         </Row>
                     ) : null}
