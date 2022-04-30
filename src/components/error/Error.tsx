@@ -1,20 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 type Props = {
-    message: string
-    onClick?: () => void
-}
+    message: string;
+    onClick?: () => void;
+};
 
-const Error = ({ message, onClick }: Props) => {
+function Error({ message, onClick }: Props) {
     return (
         <ErrorContainer>
-            <div>
-                {message} {':('}
-            </div>
+            <div>{message} :(</div>
             {onClick ? <Button onClick={onClick}>Clear Search</Button> : null}
         </ErrorContainer>
-    )
+    );
 }
 
 const Button = styled.button`
@@ -24,7 +22,7 @@ const Button = styled.button`
     border-radius: 10px;
     color: white;
     font-weight: bold;
-`
+`;
 
 const ErrorContainer = styled.div`
     display: flex;
@@ -32,6 +30,6 @@ const ErrorContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-`
+`;
 
-export default Error
+export default Error;

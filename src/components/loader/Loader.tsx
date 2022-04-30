@@ -1,14 +1,14 @@
-import React from 'react'
-import './Loader.css'
+import React from 'react';
+import './Loader.css';
 
-const Loader = () => {
+function Loader() {
     return (
         <div className="container">
             <div className="blue" />
             <div className="red" />
             <div className="green" />
         </div>
-    )
+    );
 }
 
-export default Loader
+export default Loader;

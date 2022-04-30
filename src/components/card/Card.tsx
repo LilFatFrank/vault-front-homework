@@ -1,12 +1,12 @@
-import styled, { ThemeProvider } from 'styled-components'
-import React from 'react'
+import styled, { ThemeProvider } from 'styled-components';
+import React from 'react';
 import {
     CardProps,
     DefaultTheme,
     ReceivedTheme,
     SentTheme,
     Type,
-} from './CardUtils'
+} from './CardUtils';
 
 const StyledCard = styled.div`
     padding: 10px;
@@ -16,24 +16,24 @@ const StyledCard = styled.div`
     background: white;
     border: 1px solid ${(props) => props.theme.main};
     box-shadow: 0px 4px 4px 0px ${(props) => props.theme.secondary};
-`
+`;
 const Title = styled.h1`
     font-size: 18px;
     font-weight: 600;
     color: black;
     margin-bottom: 5px;
-`
+`;
 const Content = styled.div`
     display: flex;
     flex-direction: column;
-`
+`;
 const Row = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
-`
+`;
 
-const Card = ({ type, amount, asset, name, receiver, sender }: CardProps) => {
+function Card({ type, amount, asset, name, receiver, sender }: CardProps) {
     return (
         <ThemeProvider
             theme={
@@ -75,7 +75,7 @@ const Card = ({ type, amount, asset, name, receiver, sender }: CardProps) => {
                 </Content>
             </StyledCard>
         </ThemeProvider>
-    )
+    );
 }
 
-export default Card
+export default Card;

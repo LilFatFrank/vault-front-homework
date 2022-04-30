@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { Input, Card, Loader, Error } from './components'
-import { API } from './utils/constants'
-import { Notif } from './utils/interfaces'
-import { debounce } from './utils/Utility'
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Input, Card, Loader, Error } from './components';
+import { API } from './utils/constants';
+import { Notif } from './utils/interfaces';
+import { debounce } from './utils/Utility';
 
 function App() {
-    const [searchText, setSearchText] = useState('')
-    const [isLoading, setLoading] = useState(false)
-    const [results, setResults] = useState<null | Notif[]>([])
+    const [searchText, setSearchText] = useState('');
+    const [isLoading, setLoading] = useState(true);
+    const [results, setResults] = useState<null | Notif[]>([]);
 
     useEffect(() => {
         // adding a debounce to wait every 1.5 seconds
         // calling an api every time something is typed is bad performance
-        callApi()
-    }, [searchText])
+        callApi();
+    }, [searchText]);
 
-    const callApi = debounce(() => effect())
+    const callApi = debounce(() => effect());
 
     const effect = async () => {
         try {
-            setLoading(true)
+            setLoading(true);
             // sending the search text as upper case to retrieve proper response
             const res = await fetch(
                 `${API}/search?q=${searchText?.toUpperCase()}`
-            )
-            const data = await res.json()
-            setResults(data && data.length ? data : [])
+            );
+            const data = await res.json();
+            setResults(data && data.length ? data : []);
             // we just wait for data, even if it fails or is undefined we have to stop loading
-            setLoading(false)
+            setLoading(false);
         } catch (e) {
-            setLoading(false)
-            setResults([])
+            setLoading(false);
+            setResults([]);
         }
-    }
+    };
 
     return (
         <Container>
@@ -63,7 +63,7 @@ function App() {
                 />
             )}
         </Container>
-    )
+    );
 }
 
 const Container = styled.div`
@@ -71,6 +71,6 @@ const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-`
+`;
 
-export default App
+export default App;
