@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -5,15 +7,6 @@ type Props = {
     message: string;
     onClick?: () => void;
 };
-
-function Error({ message, onClick }: Props) {
-    return (
-        <ErrorContainer>
-            <div>{message} :(</div>
-            {onClick ? <Button onClick={onClick}>Clear Search</Button> : null}
-        </ErrorContainer>
-    );
-}
 
 const Button = styled.button`
     cursor: pointer;
@@ -31,5 +24,14 @@ const ErrorContainer = styled.div`
     flex-direction: column;
     gap: 10px;
 `;
+
+function Error({ message, onClick }: Props) {
+    return (
+        <ErrorContainer>
+            <div>{message} :(</div>
+            {onClick ? <Button onClick={onClick}>Clear Search</Button> : null}
+        </ErrorContainer>
+    );
+}
 
 export default Error;

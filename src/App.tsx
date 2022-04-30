@@ -1,20 +1,23 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Input, Card, Loader, Error } from './components';
 import { API } from './utils/constants';
 import { Notif } from './utils/interfaces';
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+`;
+
 function App() {
     const [searchText, setSearchText] = useState('');
     const [isLoading, setLoading] = useState(true);
     const [results, setResults] = useState<null | Notif[]>([]);
-
-    useEffect(() => {
-        // adding a debounce to wait every 1.5 seconds
-        // calling an api every time something is typed is bad performance
-        const timer = setTimeout(() => effect(), 1500);
-        return () => clearTimeout(timer);
-    }, [searchText]);
 
     const effect = async () => {
         try {
@@ -25,13 +28,21 @@ function App() {
             );
             const data = await res.json();
             setResults(data && data.length ? data : []);
-            // we just wait for data, even if it fails or is undefined we have to stop loading
+            // we just wait for data, even if it fails or is undefined
+            // we have to stop loading
             setLoading(false);
         } catch (e) {
             setLoading(false);
             setResults([]);
         }
     };
+
+    useEffect(() => {
+        // adding a debounce to wait every 1.5 seconds
+        // calling an api every time something is typed is bad performance
+        const timer = setTimeout(() => effect(), 1500);
+        return () => clearTimeout(timer);
+    }, [searchText]);
 
     return (
         <Container>
@@ -63,12 +74,5 @@ function App() {
         </Container>
     );
 }
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-`;
 
 export default App;

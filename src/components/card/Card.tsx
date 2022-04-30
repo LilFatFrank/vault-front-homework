@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled, { ThemeProvider } from 'styled-components';
 import React from 'react';
 import {
